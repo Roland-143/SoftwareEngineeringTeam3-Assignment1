@@ -1,0 +1,59 @@
+Business Scenario
+
+Assume that each team is a company. The customers ask companies to write five sorting algorithms, including Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort. These codes are written in five programming languages, Java, Python, Julia, Go, Rust programming languages 
+
+Each algorithm is its programming branches. For example, insertion sort algorithm has its Java version, Python version, Julia version, Go version, and Rust version; Quick sort algorithm has its Java version, Python version, etc.
+
+Each programming language has its algorithm branches. For example, java branch has Bubble Sort, Selection Sort, Insertion Sort, etc.
+
+Job Roles
+
+Each company has three job roles, including developers, quality assurances, and product managers. Developers write codes, then commit to the GitHub. Quality Assurance review codes with comments. then merge branches. Product managers pull all codes then compile these from the GitHub.
+
+Assignments 
+
+(0) students are expected to meet with the team leaders, virtually and in-person.
+
+(1) Creating the Group GitHub Repository on the GitHub website - Done
+
+(2) Each team member install VirtualBox and Ubuntu 24.04.1 - Done (Hopefully 0_0)
+
+(3) Write sorting algorithms with 5 programming language codes through AI-tools, making sure that the API is the same. 
+
+(4) Demonstrating how to create branch and merging different versions.
+
+(5) Demonstrating how to sharing and updating on GitHub with screenshots of team members/contributors. 
+
+(6) Demonstrating how to Collaboration on GitHub on GitHub with screenshots of team members/contributors.
+
+(7) Submitting the course project report following up the writing format.
+
+(8) Submitting the Presentation and running codes should be run on the Ubuntu.
+
+Grading Policies
+
+(0) Professor keeps right to ask students showing their skills in front of David. (BE READY 🥲)
+
+(1) In-class evaluations and attendances
+
+(2) In-class demonstration and presentation.
+
+(3) Team report, codes, and other outcomes.
+
+Tips:
+
+[1] How to Install Ubuntu 24.04 LTS on VirtualBox in Windows 11, website: https://www.youtube.com/watch?v=DhVjgI57Ino
+
+[2] How to Create, Build, and Run Java Hello World Program with Eclipse on Ubuntu 24.04 LTS Linux, Website: https://www.youtube.com/watch?v=B75UrI2Lr0g
+
+[3]  GitHub labs 1-5
+
+[4] Installing Ubuntu 24.04.1 on Laptops
+
+Step 1: Downloading Ubuntu 24.04.1 LTS: https://ubuntu.com/download/server
+
+Step 2: Installing the VirtualBox on your OS (Windows or Apple iOS)
+
+Step 3: Installing the Ubuntu 24.04.1 LTS on your VirtualBox.
+
+Step 4: Rewrite Codes through nano on the installed Ubuntu 24.04.1 LTS. Website: https://www.geeksforgeeks.org/nano-text-editor-in-linux/
