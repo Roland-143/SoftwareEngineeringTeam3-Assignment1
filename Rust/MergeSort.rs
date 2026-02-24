@@ -14,65 +14,106 @@ rustc MergeSort.rs
 ./MergeSort
 
 * Make sure these commands are run from the /rust directory!
+* We shouldn't really have to run each file individually, you would only
+run this file specifically for testing purposes. See main.rs for more information!
 
 */
 
-fn merge_sort(values: &mut [i32]) {
-    let len = values.len();
+// MergeSort.rs (module-style; no main)
 
-    if len <= 1 {
+use std::time::Instant;
+
+pub fn run(raw_args: &[String]) -> i32 {
+    let (quiet, help) = parse_flags(raw_args);
+    if help {
+        print_help("mergesort");
+        return 0;
+    }
+
+    let mut numbers = default_numbers();
+
+    if !quiet {
+        println!("Merge Sort Demo");
+        println!("Before: {:?}", numbers);
+    }
+
+    let start = Instant::now();
+    merge_sort_in_place(&mut numbers);
+    let elapsed = start.elapsed();
+
+    if !quiet {
+        println!("After:  {:?}", numbers);
+    }
+    println!("Execution time: {:.3?}", elapsed);
+    0
+}
+
+fn merge_sort_in_place(values: &mut [i64]) {
+    let n = values.len();
+    if n <= 1 {
         return;
     }
 
-    let mid = len / 2;
+    let mid = n / 2;
+    merge_sort_in_place(&mut values[..mid]);
+    merge_sort_in_place(&mut values[mid..]);
 
-    // Sort left & right halves
-    merge_sort(&mut values[..mid]);
-    merge_sort(&mut values[mid..]);
-
-    // Merge the sorted halves
-    let mut merged = values.to_vec();
-
-    merge(&values[..mid], &values[mid..], &mut merged[..]);
-
-    values.copy_from_slice(&merged);
+    // Merge into a temp buffer then copy back
+    let mut tmp = values.to_vec();
+    merge(&values[..mid], &values[mid..], &mut tmp[..]);
+    values.copy_from_slice(&tmp);
 }
 
-fn merge(left: &[i32], right: &[i32], result: &mut [i32]) {
-    let mut i = 0;
-    let mut j = 0;
-    let mut k = 0;
+fn merge(left: &[i64], right: &[i64], out: &mut [i64]) {
+    let (mut i, mut j, mut k) = (0, 0, 0);
 
     while i < left.len() && j < right.len() {
         if left[i] <= right[j] {
-            result[k] = left[i];
+            out[k] = left[i];
             i += 1;
         } else {
-            result[k] = right[j];
+            out[k] = right[j];
             j += 1;
         }
         k += 1;
     }
 
     while i < left.len() {
-        result[k] = left[i];
+        out[k] = left[i];
         i += 1;
         k += 1;
     }
-
     while j < right.len() {
-        result[k] = right[j];
+        out[k] = right[j];
         j += 1;
         k += 1;
     }
 }
 
-fn main() {
-    let mut numbers = vec![5, 2, 9, 1, 5, 6];
+fn default_numbers() -> Vec<i64> {
+    vec![64, 34, 25, 12, 22, 11, 90, -3, 0, 17, 17, 5]
+}
 
-    println!("Before sorting: {:?}", numbers);
+fn parse_flags(args: &[String]) -> (bool, bool) {
+    let mut quiet = false;
+    let mut help = false;
+    for a in args {
+        match a.as_str() {
+            "--quiet" | "-q" => quiet = true,
+            "--help" | "-h" => help = true,
+            _ => {}
+        }
+    }
+    (quiet, help)
+}
 
-    merge_sort(&mut numbers);
+fn print_help(name: &str) {
+    println!(
+        r#"Usage:
+  {name} [--quiet|-q] [--help|-h]
 
-    println!("After sorting:  {:?}", numbers);
+Notes:
+- Uses a built-in demo list (no custom numbers).
+- Prints before/after + execution time."#
+    );
 }
