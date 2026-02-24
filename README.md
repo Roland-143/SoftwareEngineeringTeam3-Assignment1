@@ -19,7 +19,7 @@ javac *.java
 java Main MERGESORT
 ```
 
-Other Java algorithm options:
+Java algorithm options:
 `MERGESORT | QUICKSORT | INSERTIONSORT | BUBBLESORT | SELECTIONSORT`
 
 ---
@@ -34,6 +34,9 @@ Optional: pass your own numbers after the algorithm (space-separated):
 ```bash
 python main.py MERGESORT 100 5 10 1 11
 ```
+
+Python algorithm options:
+`MERGESORT | QUICKSORT | INSERTIONSORT | BUBBLESORT | SELECTIONSORT`
 
 ---
 
@@ -51,8 +54,11 @@ Go algorithm options:
 ### Julia (assumes `Julia/main.jl` exists)
 ```bash
 cd Julia
-julia main.jl MERGESORT
+julia main.jl merge
 ```
+
+Julia algorithm options:
+`merge | quick | selection | insertion | bubble`
 
 ---
 
