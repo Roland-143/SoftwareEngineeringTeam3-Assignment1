@@ -25,14 +25,8 @@ Other Java algorithm options:
 ---
 
 ### Python (runs from `main.py`)
-If `main.py` is inside the `Python/` folder:
 ```bash
 cd Python
-python main.py MERGESORT
-```
-
-If `main.py` is at the repo root:
-```bash
 python main.py MERGESORT
 ```
 
