@@ -5,6 +5,83 @@ This is a repository for Assignment 1, allowing for version control and easy sub
 
 ---
 
+## Running the sorting algorithms (using each language’s main file)
+
+### Quick start (clone → pull → run)
+```bash
+git clone PASTE_THE_HTTPS_URL_HERE
+cd repo-folder-name
+git pull
+```
+
+### Java (runs from `Java/Main.java`)
+```bash
+cd Java
+javac *.java
+java Main MERGESORT
+```
+
+Other Java algorithm options:
+`MERGESORT | QUICKSORT | INSERTIONSORT | BUBBLESORT | SELECTIONSORT`
+
+---
+
+### Python (runs from `main.py`)
+If `main.py` is inside the `Python/` folder:
+```bash
+cd Python
+python main.py MERGESORT
+```
+
+If `main.py` is at the repo root:
+```bash
+python main.py MERGESORT
+```
+
+Optional: pass your own numbers after the algorithm (space-separated):
+```bash
+python main.py MERGESORT 100 5 10 1 11
+```
+
+---
+
+### Go (runs from `Go/main.go`)
+```bash
+cd Go
+go run . MERGE
+```
+
+Go algorithm options:
+`BUBBLE | INSERTION | SELECTION | MERGE | QUICK`
+
+---
+
+### Julia (assumes `Julia/main.jl` exists)
+```bash
+cd Julia
+julia main.jl MERGESORT
+```
+
+---
+
+### Rust (assumes `Rust/main.rs` exists)
+
+If you’re compiling a single file:
+```bash
+cd Rust
+rustc main.rs
+./main MERGESORT
+```
+
+(Windows: run `main.exe` instead of `./main`)
+
+If you’re using Cargo (only if a `Cargo.toml` exists):
+```bash
+cargo run -- MERGESORT
+```
+
+---
+
 **NOTE:** All of these commands will be for **CMD** or **Git Bash**. If you are using another terminal, I'm sorry for your loss.
 
 ## 1) How to clone the repo (first time only)
