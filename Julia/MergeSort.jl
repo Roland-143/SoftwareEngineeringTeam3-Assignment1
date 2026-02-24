@@ -37,3 +37,11 @@ function merge_sort(arr)
 
     return merge(left, right)
 end
+println("Enter numbers separated by spaces:")
+input = readline()
+arr = parse.(Int, split(input))
+
+sorted = merge_sort(arr)
+
+println("Sorted array:")
+println(sorted)
