@@ -12,3 +12,12 @@ function bubble_sort(arr)
 
     return a
 end
+
+println("Enter numbers separated by spaces:")
+input = readline()
+arr = parse.(Int, split(input))
+
+sorted = bubble_sort(arr)
+
+println("Sorted array:")
+println(sorted)
