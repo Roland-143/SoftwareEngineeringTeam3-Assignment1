@@ -14,44 +14,88 @@ rustc QuickSort.rs
 ./QuickSort
 
 * Make sure these commands are run from the /rust directory!
+* We shouldn't really have to run each file individually, you would only
+run this file specifically for testing purposes. See main.rs for more information!
 
 */
 
+use std::time::Instant;
 
-fn quick_sort(values: &mut [i32]) {
+pub fn run(raw_args: &[String]) -> i32 {
+    let (quiet, help) = parse_flags(raw_args);
+    if help {
+        print_help("quicksort");
+        return 0;
+    }
+
+    let mut numbers = default_numbers();
+
+    if !quiet {
+        println!("Quick Sort Demo");
+        println!("Before: {:?}", numbers);
+    }
+
+    let start = Instant::now();
+    quick_sort_in_place(&mut numbers);
+    let elapsed = start.elapsed();
+
+    if !quiet {
+        println!("After:  {:?}", numbers);
+    }
+    println!("Execution time: {:.3?}", elapsed);
+    0
+}
+
+fn quick_sort_in_place(values: &mut [i64]) {
     if values.len() <= 1 {
         return;
     }
-
-    let pivot_index = partition(values);
-
-    quick_sort(&mut values[..pivot_index]);
-    quick_sort(&mut values[pivot_index + 1..]);
+    let p = partition(values);
+    let (left, right_with_pivot) = values.split_at_mut(p);
+    // right_with_pivot[0] is pivot
+    quick_sort_in_place(left);
+    quick_sort_in_place(&mut right_with_pivot[1..]);
 }
 
-fn partition(values: &mut [i32]) -> usize {
+fn partition(values: &mut [i64]) -> usize {
     let len = values.len();
-    let pivot = values[len - 1]; // choose last element as pivot
-
+    let pivot = values[len - 1];
     let mut i = 0;
 
-    for j in 0..len - 1 {
+    for j in 0..(len - 1) {
         if values[j] < pivot {
             values.swap(i, j);
             i += 1;
         }
     }
-
     values.swap(i, len - 1);
     i
 }
 
-fn main() {
-    let mut numbers = vec![5, 2, 9, 1, 5, 6];
+fn default_numbers() -> Vec<i64> {
+    vec![64, 34, 25, 12, 22, 11, 90, -3, 0, 17, 17, 5]
+}
 
-    println!("Before sorting: {:?}", numbers);
+fn parse_flags(args: &[String]) -> (bool, bool) {
+    let mut quiet = false;
+    let mut help = false;
+    for a in args {
+        match a.as_str() {
+            "--quiet" | "-q" => quiet = true,
+            "--help" | "-h" => help = true,
+            _ => {}
+        }
+    }
+    (quiet, help)
+}
 
-    quick_sort(&mut numbers);
+fn print_help(name: &str) {
+    println!(
+        r#"Usage:
+  {name} [--quiet|-q] [--help|-h]
 
-    println!("After sorting:  {:?}", numbers);
+Notes:
+- Uses a built-in demo list (no custom numbers).
+- Prints before/after + execution time."#
+    );
 }
