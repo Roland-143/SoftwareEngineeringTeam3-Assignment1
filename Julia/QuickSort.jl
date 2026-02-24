@@ -9,3 +9,11 @@ function quick_sort(arr)
 
     return vcat(quick_sort(less), [pivot], quick_sort(greater))
 end
+println("Enter numbers separated by spaces:")
+input = readline()
+arr = parse.(Int, split(input))
+
+sorted = quick_sort(arr)
+
+println("Sorted array:")
+println(sorted)
