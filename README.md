@@ -1,8 +1,6 @@
 # SoftwareEngineeringTeam3-Assignment1
 This is a repository for Assignment 1, allowing for version control and easy submission of work done for the CS416 - Software Engineering course.
 
-**NOTE: This readme will have to change based on the specifications of the assignment, this is primarily Git basics**
-
 ---
 
 ## Running the sorting algorithms (using each language’s main file)
