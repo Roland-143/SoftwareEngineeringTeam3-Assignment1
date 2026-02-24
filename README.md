@@ -24,7 +24,7 @@ Other Java algorithm options:
 
 ---
 
-### Python (runs from `main.py`)
+### Python (runs from `Python/main.py`)
 ```bash
 cd Python
 python main.py MERGESORT
@@ -58,18 +58,17 @@ julia main.jl MERGESORT
 
 ### Rust (assumes `Rust/main.rs` exists)
 
-If you’re compiling a single file:
 ```bash
 cd Rust
 rustc main.rs
-./main MERGESORT
+./main
 ```
 
 (Windows: run `main.exe` instead of `./main`)
 
 If you’re using Cargo (only if a `Cargo.toml` exists):
 ```bash
-cargo run -- MERGESORT
+cargo run --
 ```
 
 ---
